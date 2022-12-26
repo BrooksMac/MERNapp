@@ -1,0 +1,76 @@
+.chat-btn {
+    position: fixed; /*regardless of zoom stay where put*/
+    right: 14px;
+    bottom: 30px;
+    cursor: pointer;
+    background-color: blue;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 22px;
+    z-index: 2; /*what layer it will be displayed on*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-btn .close {
+    display: none; /*default hidden*/
+}
+
+/*these together allow the icons to toggle which is possible through our checkbox named "check"*/
+#check:checked ~ .chat-btn i {
+    display: block;
+}
+
+#check:checked ~ .chat-btn .comment {
+    display: none !important;
+}
+/* displays when the button is clicked*/
+#check:checked ~ .chat-wrapper {
+    opacity: 1;
+}
+
+.chat-wrapper {
+    opacity: 0; /*not visible by default*/
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    z-index: 2;
+    width: 300px;
+    transition: all 0.4s;
+    background-color: white;
+}
+
+.chat-header {
+    background-color: blue;
+    padding: 13px;
+    margin-bottom: 10px;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+}
+
+.chat-form {
+    padding: 15px;
+}
+
+.chat-form input,
+.chat-form textarea,
+.chat-form button {
+    margin-bottom: 10px;
+}
+
+.chat-form textarea {
+    resize: none;
+}
+
+.form-control:focus,
+.btn:focus {
+    box-shadow: none;
+}
+
+.cht-msg {
+    max-height: 300px;
+    overflow: auto;
+}
