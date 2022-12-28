@@ -7,6 +7,9 @@ const port = 3000 /*this should be the same port as front end*/
 
 const apiRoutes = require("./routes/apiRoutes")
 
+/*cannot post data to the server without this*/
+app.use(express.json())
+
 
 
 /* ************************************************ Begin Examples ********************************************************************************************************** */
@@ -56,6 +59,16 @@ app.get('/', (req, res) => {
 /*this middleware will trigger when ANY req or res is called starting with the path /api */
 app.use('/api', apiRoutes) /*apiRoutes is our api route handler*/
 
+app.use((error, req, res, next) => {
+    console.error(error);
+
+    res.status(500).json({
+        message: error.message,
+        stack: error.stack
+    })
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+

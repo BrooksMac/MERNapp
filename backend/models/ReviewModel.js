@@ -4,7 +4,7 @@ const reviewSchema = mongoose.Schema({
     comment: {type: String, required: true},
     rating: {type: Number, required: true},
     user: {
-        _id: {type: mongoose.Schema.Types.ObjectId, required: true},
+        _id: {type: mongoose.Schema.Types.ObjectId, required: true}, /*mongoDB creates this attribute for us upon creating the data*/
         name: {type: String, required: true}
     }
 }, {
