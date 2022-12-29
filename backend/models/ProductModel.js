@@ -60,7 +60,7 @@ const productSchema = mongoose.Schema({
 })
 const Product = mongoose.model("Product", productSchema)
 
-/*index's are used to aid in searching through databases*/
+/*index's are used to aid in searching through databases we use text as $text in the productController search box function*/
 productSchema.index({name: "text", description: "text"},{name: "TextIndex" });
 /*1 means ascending order, -1 means descending order*/
 productSchema.index({"attrs.key":1, "attrs.value":1})

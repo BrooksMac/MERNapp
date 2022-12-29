@@ -1,6 +1,7 @@
 
 
 const express = require('express')
+const fileUpload = require('express-fileupload');
 const app = express()
 
 const port = 3000 /*this should be the same port as front end*/
@@ -58,6 +59,9 @@ app.get('/', (req, res) => {
 
 /*this middleware will trigger when ANY req or res is called starting with the path /api */
 app.use('/api', apiRoutes) /*apiRoutes is our api route handler*/
+
+/*more middleware for uploading files*/
+app.use(fileUpload);                                                                                               /*different from lecture, he had fileUpload()*/
 
 app.use((error, req, res, next) => {
     console.error(error);
