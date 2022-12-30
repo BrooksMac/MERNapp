@@ -205,7 +205,7 @@ const adminUpdateProduct = async (req, res, next) => {
         }else{
             product.attrs = []
         }
-        await product[0].save()                                         /*save() is not happy here i've added [0] to make it happy*/
+        await product.save()                                         /*save() is not happy here i've added [0] to make it happy*/
         res.json({
             message: "product updated"
         })
@@ -252,7 +252,7 @@ const adminUpload = async (req, res, next) => {
                 }
             })
         }
-        await product[0].save()                                                     /*added [0] again to make it happy*/
+        await product.save()                                                     /*added [0] again to make it happy*/
         return res.send("Files uploaded!")
 
     }catch (error){

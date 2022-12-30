@@ -2,6 +2,7 @@
 
 const express = require('express')
 const fileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser')
 const app = express()
 
 const port = 3000 /*this should be the same port as front end*/
@@ -62,6 +63,9 @@ app.use('/api', apiRoutes) /*apiRoutes is our api route handler*/
 
 /*more middleware for uploading files*/
 app.use(fileUpload);                                                                                               /*different from lecture, he had fileUpload()*/
+
+/*more middleware for parsing cookies for authentication purposes*/
+app.use(cookieParser())
 
 app.use((error, req, res, next) => {
     console.error(error);

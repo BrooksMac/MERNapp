@@ -26,6 +26,7 @@ const importData = async () => {
         await User.collection.deleteMany({})
         await Order.collection.deleteMany({})
 
+
         await Category.insertMany(categoryData) /*insert the data*/
 
         /*this is some crazy shit that has to do with mapping the reviews to a particular product*/
@@ -40,6 +41,7 @@ const importData = async () => {
 
         await User.insertMany(userData)
         await Order.insertMany(orderData)
+
 
         console.log("Seeder data proceeded successfully")
         process.exit()

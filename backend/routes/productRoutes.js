@@ -4,6 +4,8 @@ const express = require('express')
 const router = express.Router()
 const {getProducts, getProductById, getBestSellers, adminGetProducts, adminDeleteProduct, adminCreateProduct, adminUpdateProduct, adminUpload, adminDeleteProductImage} = require("../controllers/productController") /*import so that getProducts can be accessed*/
 
+const {verifyIsLoggedIn, verifyIsAdmin} = require("../middleware/verifyAuthToken")
+
 /*user routes*/
 router.get("/category/:categoryName/search/:searchQuery", getProducts) /*searching through a particular category*/
 router.get("/category/:categoryName", getProducts) /*/:category is a dynamic URL passed parameter*/
@@ -13,6 +15,12 @@ router.get("/get-one/:id", getProductById)
 router.get("/bestsellers", getBestSellers)
 
 /*admin routes*/
+/*this will check if the user is logged in*/
+router.use(verifyIsLoggedIn)
+
+/*this will check if a user is an admin*/
+router.use( verifyIsAdmin )
+
 router.get("/admin", adminGetProducts)
 router.delete("/admin/:id", adminDeleteProduct)
 router.post("/admin", adminCreateProduct) /*post is for saving new items to the DB*/
